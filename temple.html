@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Jagadishwar Temple - Raigad Fort</title>
+  <style>
+    * {margin:0; padding:0; box-sizing:border-box;}
+    body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background: #fff8f0; color: #222; line-height: 1.6; }
+
+    header {
+      background: url("https://upload.wikimedia.org/wikipedia/commons/2/2a/Jagadishwar_temple%2C_Raigad_fort.jpg") no-repeat center center/cover;
+      height: 100vh; display:flex; flex-direction:column; justify-content:flex-start; align-items:center;
+      color: white; text-align: center; position:relative; padding-top: 120px;
+    }
+    header::after {
+      content:""; position:absolute; top:0; left:0; width:100%; height:100%;
+      background: rgba(194,65,12,0.65); z-index:0;
+    }
+    header h1, header p { position: relative; z-index: 1; display: inline-block; padding: 6px 18px; border-radius: 25px; text-shadow: 2px 2px 8px rgba(0,0,0,0.7); margin: 5px auto; }
+    header h1 { font-size: 2.5rem; background: rgba(128,0,0,0.7); }
+    header p { font-size: 1.1rem; background: rgba(255,140,0,0.85); }
+
+    /* Scroll Hint */
+    .tutorial-hint { position: absolute; top: 55%; left: 50%; transform: translateX(-50%); text-align: center; z-index: 5; animation: fadeIn 1s ease-in-out; }
+    .tutorial-hint p { margin: 10px 0 0; font-size: 1.1rem; font-weight: bold; color: #fff; text-shadow: 0 0 8px rgba(0,0,0,0.8); }
+    .tutorial-hint .circle { width: 85px; height: 85px; border-radius: 50%; background: rgba(249, 211, 66, 0.2); border: 3px solid #f9d342; display:flex; justify-content:center; align-items:center; animation: pulse 1.5s infinite; margin:auto; }
+    .tutorial-hint .arrow { font-size: 3.5rem; color: #f9d342; animation: bounceArrow 1s infinite; text-shadow:0 0 18px rgba(249,211,66,1); }
+    @keyframes bounceArrow { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(12px); } }
+    @keyframes pulse { 0% { transform: scale(1); opacity:1; } 70% { transform: scale(1.3); opacity:0.4; } 100% { transform: scale(1); opacity:1; } }
+    @keyframes fadeIn { from{opacity:0;} to{opacity:1;} }
+
+    .container {max-width:1100px; margin:auto; padding:60px 20px;}
+    h2 {font-size:2rem; color:#c0392b; margin-bottom:15px; border-left:6px solid #e67e22; padding-left:10px;}
+    .card {background:#fff3e0; border-radius:12px; box-shadow:0 4px 15px rgba(0,0,0,0.2); padding:25px; margin:20px 0;}
+    .card img {width:100%; border-radius:12px; margin-top:15px;}
+    .facts {background: linear-gradient(135deg, #e67e22, #c0392b); color:white; border-radius:12px; padding:30px; margin-top:40px;}
+    .facts ul {margin:15px 0 0 20px;}
+    footer {background:#800000; color:white; text-align:center; padding:20px; margin-top:50px;}
+
+    .fade-in {opacity:0; transform: translateY(20px); transition: all 0.8s ease-in-out;}
+    .fade-in.visible {opacity:1; transform: translateY(0);}
+
+    /* Navbar */
+    .site-nav{position:sticky; top:0; left:0; width:100%; display:flex; align-items:center; justify-content:space-between; padding:10px 16px; background:linear-gradient(135deg,#8b0000,#e67e22); color:#fff; z-index:1000; box-shadow:0 2px 10px rgba(0,0,0,0.2);}
+    .site-nav h2{ font-size:1.25rem; color:#f9d342; margin:0; }
+    .site-nav .menu-toggle{ display:none; font-size:1rem; background:transparent; border:none; color:#fff; cursor:pointer; }
+    .site-nav ul{ list-style:none; display:flex; flex-wrap:wrap; gap:10px; margin:0; padding:0; }
+    .site-nav ul li a{ display:inline-block; padding:8px 12px; border-radius:999px; text-decoration:none; color:#fff; background: rgba(255,255,255,0.1); }
+    .site-nav ul li a:hover{ background: rgba(255,255,255,0.2); }
+    @media (max-width:768px){ .site-nav{flex-wrap:wrap;} .site-nav .menu-toggle{display:block;} .site-nav ul{width:100%; display:none; flex-direction:column; gap:8px; margin-top:8px;} .site-nav ul.open{display:flex;} }
+
+    /* Language Dropdown */
+    .lang-container { display:flex; align-items:center; gap:5px; font-weight:bold; color:#f9d342; }
+    .lang-select { padding:6px 12px; border-radius:8px; border:2px solid #f9d342; background:#fff; color:#000; font-weight:bold; font-size:1rem; cursor:pointer; box-shadow:0 0 8px rgba(249,211,66,0.6); transition: all 0.3s ease; }
+    .lang-select:hover { box-shadow:0 0 14px rgba(249,211,66,1); transform:scale(1.05); }
+  </style>
+</head>
+<body>
+  <nav class="site-nav">
+    <h2>Raigad Fort</h2>
+    <button class="menu-toggle" onclick="toggleMenu()">Menu ☰</button>
+    <ul id="menu">
+      <li><a href="index.html">🏰 Maha Darwaja</a></li>
+      <li><a href="rani-vasa.html">👑 Rani Vasa</a></li>
+      <li><a href="samadhi.html">⚔️ Samadhi</a></li>
+      <li><a href="temple.html">🕉️ Temple</a></li>
+      <li><a href="rajbhavan.html">🏛️ Raj Bhavan</a></li>
+      <li><a href="takmaktok.html">⛰️ Takmak Tok</a></li>
+      <li><a href="gangasagar.html">💧 Gangasagar Lake</a></li>
+      <li><a href="chordarwaja.html">🚪 Chor Darwaja</a></li>
+      <li><a href="balekilla.html">🏯 Bale Killa</a></li>
+      <li><a href="buruj.html">🌄 Hirkani Buruj</a></li>
+    </ul>
+    <div class="lang-container">
+      <select id="langSwitcher" class="lang-select">
+        <option value="en">English</option>
+        <option value="mr">मराठी</option>
+        <option value="hi">हिंदी</option>
+      </select>
+    </div>
+  </nav>
+
+  <header>
+    <h1 data-key="title">Jagadishwar Temple</h1>
+    <p data-key="subtitle">The Sacred Temple of Raigad Fort</p>
+    <div id="tutorialHint" class="tutorial-hint">
+      <div class="circle"><div class="arrow">⬇</div></div>
+      <p data-key="scrollHint">Scroll Down</p>
+    </div>
+  </header>
+
+  <div class="container">
+    <div class="card fade-in">
+      <h2 data-key="historyTitle">📜 Historical Background</h2>
+      <p data-key="historyText"><b>Jagadishwar Temple</b> was built by <b>Chhatrapati Shivaji Maharaj</b> in the 17th century. It was his personal place of worship, showing his devotion. He regularly offered prayers here after court assemblies.</p>
+    </div>
+    <div class="card fade-in">
+      <h2 data-key="architectureTitle">🏰 Architecture</h2>
+      <p data-key="architectureText">Constructed in the <b>Hemadpanti style</b> using black basalt rock. Features a carved <b>mandapa</b>, a tall <b>shikhara</b>, and an elevated courtyard. Faces <b>east</b> symbolizing light and knowledge.</p>
+      <img src="./images/temple.png" alt="Jagadishwar Temple">
+    </div>
+    <div class="card fade-in">
+      <h2 data-key="deityTitle">🙏 Deity</h2>
+      <p data-key="deityText">The presiding deity is <b>Lord Jagadishwar</b>. A black stone idol is worshipped here. Shivaji Maharaj regarded Lord Jagadishwar as his <b>kuldevata</b>.</p>
+    </div>
+    <div class="card fade-in">
+      <h2 data-key="significanceTitle">🕉️ Religious & Cultural Significance</h2>
+      <p data-key="significanceText">Shivaji Maharaj sought blessings here before his <b>coronation in 1674</b>. Festivals and rituals are still celebrated, preserving Maratha traditions.</p>
+    </div>
+    <div class="facts fade-in">
+      <h2 data-key="factsTitle">✨ Interesting Facts</h2>
+      <ul>
+        <li data-key="fact1">The temple stands slightly away from the palace area, for peace.</li>
+        <li data-key="fact2">Offers breathtaking views of Raigad valleys.</li>
+        <li data-key="fact3">One of the few near-perfect surviving structures on Raigad.</li>
+      </ul>
+    </div>
+  </div>
+
+  <footer>
+    ⚔ <span data-key="footerText">Digital Fort Experience | Raigad Fort QR System</span> ⚔ <br>© 2025 All Rights Reserved
+  </footer>
+
+  <script>
+    // Scroll animations
+    const elements = document.querySelectorAll('.fade-in');
+    const observer = new IntersectionObserver(entries => { entries.forEach(entry => { if(entry.isIntersecting){ entry.target.classList.add('visible'); } }); }, {threshold:0.2});
+    elements.forEach(el => observer.observe(el));
+
+    function toggleMenu(){ document.getElementById('menu').classList.toggle('open'); }
+
+    window.addEventListener("scroll", ()=>{ const hint=document.getElementById("tutorialHint"); if(hint) hint.style.display="none"; });
+    setTimeout(()=>{ const hint=document.getElementById("tutorialHint"); if(hint) hint.style.display="none"; },6000);
+
+    // Language translations
+    const translations = {
+      en:{
+        title:"Jagadishwar Temple", subtitle:"The Sacred Temple of Raigad Fort", scrollHint:"Scroll Down",
+        historyTitle:"📜 Historical Background", historyText:"<b>Jagadishwar Temple</b> was built by <b>Chhatrapati Shivaji Maharaj</b> in the 17th century. It was his personal place of worship, showing his devotion. He regularly offered prayers here after court assemblies.",
+        architectureTitle:"🏰 Architecture", architectureText:"Constructed in the <b>Hemadpanti style</b> using black basalt rock. Features a carved <b>mandapa</b>, a tall <b>shikhara</b>, and an elevated courtyard. Faces <b>east</b> symbolizing light and knowledge.",
+        deityTitle:"🙏 Deity", deityText:"The presiding deity is <b>Lord Jagadishwar</b>. A black stone idol is worshipped here. Shivaji Maharaj regarded Lord Jagadishwar as his <b>kuldevata</b>.",
+        significanceTitle:"🕉️ Religious & Cultural Significance", significanceText:"Shivaji Maharaj sought blessings here before his <b>coronation in 1674</b>. Festivals and rituals are still celebrated, preserving Maratha traditions.",
+        factsTitle:"✨ Interesting Facts", fact1:"The temple stands slightly away from the palace area, for peace.", fact2:"Offers breathtaking views of Raigad valleys.", fact3:"One of the few near-perfect surviving structures on Raigad.",
+        footerText:"Digital Fort Experience | Raigad Fort QR System"
+      },
+      mr:{
+        title:"जगदीश्वर मंदिर", subtitle:"राजगड किल्ल्याचा पवित्र मंदिर", scrollHint:"खाली स्क्रोल करा",
+        historyTitle:"📜 ऐतिहासिक पार्श्वभूमी", historyText:"<b>जगदीश्वर मंदिर</b> 17व्या शतकात <b>छत्रपती शिवाजी महाराज</b> यांनी बांधले. हे त्यांच्या वैयक्तिक पूजा स्थळ होते. ते दररोज सभा संपल्यानंतर इथे प्रार्थना करीत होते.",
+        architectureTitle:"🏰 वास्तुकला", architectureText:"हे <b>हेमाडपंती शैली</b> मध्ये काळ्या बेसाल्ट दगडाने बांधले आहे. यात सुंदर कोरलेले <b>मंडप</b>, उंच <b>शिखर</b>, आणि उंच अंगण आहे. मंदिर <b>पूर्व</b> दिशेला आहे, ज्याचा अर्थ प्रकाश आणि ज्ञान.",
+        deityTitle:"🙏 देवता", deityText:"येथे मुख्य देवता <b>भगवान जगदीश्वर</b> आहेत. काळ्या दगडाची मूर्ती येथे पूजली जाते. शिवाजी महाराजांनी भगवान जगदीश्वरांना आपले <b>कुलदेवता</b> मानले.",
+        significanceTitle:"🕉️ धार्मिक आणि सांस्कृतिक महत्त्व", significanceText:"शिवाजी महाराजांनी आपल्या <b>राज्याभिषेक 1674</b> पूर्वी येथे आशीर्वाद घेतले. आजही येथे सण आणि विधी साजरे केले जातात, मराठा परंपरा जिवंत ठेवतात.",
+        factsTitle:"✨ मनोरंजक तथ्ये", fact1:"मंदिर राजवाड्यापासून थोडे दूर आहे, शांततेसाठी.", fact2:"येथून राजगडाच्या खोऱ्यांचे अप्रतिम दृश्य दिसते.", fact3:"राजगडवर टिकलेली काही निव्वळ संरचना आहे.",
+        footerText:"डिजिटल फोर्ट अनुभव | राजगड किल्ला QR प्रणाली"
+      },
+      hi:{
+        title:"जगदीश्वर मंदिर", subtitle:"राजगढ़ किले का पवित्र मंदिर", scrollHint:"नीचे स्क्रॉल करें",
+        historyTitle:"📜 ऐतिहासिक पृष्ठभूमि", historyText:"<b>जगदीश्वर मंदिर</b> 17वीं शताब्दी में <b>छत्रपति शिवाजी महाराज</b> द्वारा बनाया गया। यह उनकी व्यक्तिगत पूजा स्थल था। वे सभाओं के बाद नियमित रूप से यहां प्रार्थना करते थे।",
+        architectureTitle:"🏰 वास्तुकला", architectureText:"यह <b>हेमाडपंती शैली</b> में काले बेसाल्ट पत्थर से बनाया गया। इसमें सुंदर <b>मंडप</b>, ऊँचा <b>शिखर</b>, और ऊंचा आंगन है। मंदिर <b>पूर्व</b> की ओर है, जो प्रकाश और ज्ञान का प्रतीक है।",
+        deityTitle:"🙏 देवता", deityText:"मुख्य देवता <b>भगवान जगदीश्वर</b> हैं। काले पत्थर की मूर्ति यहां पूजा जाती है। शिवाजी महाराज ने भगवान जगदीश्वर को अपने <b>कुलदेवता</b> माना।",
+        significanceTitle:"🕉️ धार्मिक और सांस्कृतिक महत्व", significanceText:"शिवाजी महाराज ने अपने <b>राज्याभिषेक 1674</b> से पहले यहाँ आशीर्वाद प्राप्त किया। आज भी यहाँ त्योहार और रीति-रिवाज आयोजित होते हैं।",
+        factsTitle:"✨ रोचक तथ्य", fact1:"मंदिर राजमहल से थोड़ी दूर है, शांति के लिए।", fact2:"यहाँ से राजगढ़ घाटियों का शानदार दृश्य दिखता है।", fact3:"राजगढ़ पर बची कुछ संरचनाओं में से एक है।",
+        footerText:"डिजिटल किला अनुभव | राजगढ़ किला QR प्रणाली"
+      }
+    };
+
+    document.getElementById('langSwitcher').addEventListener('change', ()=>{
+      const lang = document.getElementById('langSwitcher').value;
+      document.querySelectorAll('[data-key]').forEach(el=>{
+        const key = el.getAttribute('data-key');
+        if(translations[lang][key]) el.innerHTML = translations[lang][key];
+      });
+    });
+  </script>
+</body>
+</html>

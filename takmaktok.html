@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Takmak Tok - Raigad Fort</title>
+  <style>
+    * {margin:0; padding:0; box-sizing:border-box;}
+    body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background: #fff8f0; color: #222; line-height: 1.6; }
+
+    header {
+      background: url("https://upload.wikimedia.org/wikipedia/commons/f/f9/Takmak_Tok%2C_Raigad_Fort.jpg") no-repeat center center/cover;
+      height: 100vh; display:flex; flex-direction:column; justify-content:flex-start; align-items:center;
+      color: white; text-align: center; position:relative; padding-top: 120px;
+    }
+    header::after {
+      content:""; position:absolute; top:0; left:0; width:100%; height:100%;
+      background: rgba(194,65,12,0.65); z-index:0;
+    }
+    header h1, header p {
+      position: relative; z-index: 1; display: inline-block;
+      padding: 6px 18px; border-radius: 25px; text-shadow: 2px 2px 8px rgba(0,0,0,0.7); margin: 5px auto;
+    }
+    header h1 {font-size: 2.5rem; background: rgba(128,0,0,0.7);}
+    header p {font-size: 1.1rem; background: rgba(255,140,0,0.85);}
+
+    .tutorial-hint { position: absolute; top: 55%; left: 50%; transform: translateX(-50%); text-align: center; z-index: 5; animation: fadeIn 1s ease-in-out; }
+    .tutorial-hint p { margin: 10px 0 0; font-size: 1.1rem; font-weight: bold; color: #fff; text-shadow: 0 0 8px rgba(0,0,0,0.8);}
+    .tutorial-hint .circle { width: 85px; height: 85px; border-radius: 50%; background: rgba(249, 211, 66, 0.2); border: 3px solid #f9d342; display:flex; justify-content:center; align-items:center; animation: pulse 1.5s infinite; margin:auto; }
+    .tutorial-hint .arrow { font-size: 3.5rem; color: #f9d342; animation: bounceArrow 1s infinite; text-shadow:0 0 18px rgba(249,211,66,1); }
+    @keyframes bounceArrow { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(12px); } }
+    @keyframes pulse { 0% { transform: scale(1); opacity: 1; } 70% { transform: scale(1.3); opacity:0.4; } 100% { transform: scale(1); opacity:1; } }
+    @keyframes fadeIn { from{opacity:0;} to{opacity:1;} }
+
+    .container { max-width:1100px; margin:auto; padding:60px 20px;}
+    h2 { font-size:2rem; color:#c0392b; margin-bottom:15px; border-left:6px solid #e67e22; padding-left:10px;}
+    .card { background:#fff3e0; border-radius:12px; box-shadow:0 4px 15px rgba(0,0,0,0.2); padding:25px; margin:20px 0; }
+    .card img { width:100%; border-radius:12px; margin-top:15px; }
+    .facts { background: linear-gradient(135deg, #e67e22, #c0392b); color:white; border-radius:12px; padding:30px; margin-top:40px; }
+    .facts ul { margin:15px 0 0 20px; }
+    footer { background:#800000; color:white; text-align:center; padding:20px; margin-top:50px; }
+
+    .fade-in {opacity:0; transform: translateY(20px); transition: all 0.8s ease-in-out;}
+    .fade-in.visible { opacity:1; transform: translateY(0); }
+
+    /* Navbar */
+    .site-nav { position:sticky; top:0; left:0; width:100%; display:flex; align-items:center; justify-content:space-between; padding:10px 16px; background:linear-gradient(135deg,#8b0000,#e67e22); color:#fff; z-index:1000; box-shadow:0 2px 10px rgba(0,0,0,0.2);}
+    .site-nav h2 { font-size:1.25rem; color:#f9d342; margin:0; }
+    .site-nav .menu-toggle { display:none; font-size:1rem; background:transparent; border:none; color:#fff; cursor:pointer; }
+    .site-nav ul { list-style:none; display:flex; flex-wrap:wrap; gap:10px; margin:0; padding:0; }
+    .site-nav ul li a { display:inline-block; padding:8px 12px; border-radius:999px; text-decoration:none; color:#fff; background: rgba(255,255,255,0.1); }
+    .site-nav ul li a:hover { background: rgba(255,255,255,0.2); }
+    @media (max-width:768px){ .site-nav{flex-wrap:wrap;} .site-nav .menu-toggle{display:block;} .site-nav ul{width:100%; display:none; flex-direction:column; gap:8px; margin-top:8px;} .site-nav ul.open{display:flex;} }
+
+    /* Language Dropdown */
+    .lang-container { display:flex; align-items:center; gap:5px; font-weight:bold; color:#f9d342; }
+    .lang-select { padding:6px 12px; border-radius:8px; border:2px solid #f9d342; background:#fff; color:#000; font-weight:bold; font-size:1rem; cursor:pointer; box-shadow:0 0 8px rgba(249,211,66,0.6); transition: all 0.3s ease; }
+    .lang-select:hover { box-shadow:0 0 14px rgba(249,211,66,1); transform:scale(1.05); }
+  </style>
+</head>
+<body>
+  <nav class="site-nav">
+    <h2>Raigad Fort</h2>
+    <button class="menu-toggle" onclick="toggleMenu()">Menu ☰</button>
+    <ul id="menu">
+      <li><a href="index.html">🏰 Maha Darwaja</a></li>
+      <li><a href="rani-vasa.html">👑 Rani Vasa</a></li>
+      <li><a href="samadhi.html">⚔️ Samadhi</a></li>
+      <li><a href="temple.html">🕉️ Temple</a></li>
+      <li><a href="rajbhavan.html">🏛️ Raj Bhavan</a></li>
+      <li><a href="takmaktok.html">⛰️ Takmak Tok</a></li>
+      <li><a href="gangasagar.html">💧 Gangasagar Lake</a></li>
+      <li><a href="chordarwaja.html">🚪 Chor Darwaja</a></li>
+      <li><a href="balekilla.html">🏯 Bale Killa</a></li>
+      <li><a href="buruj.html">🌄 Hirkani Buruj</a></li>
+    </ul>
+    <div class="lang-container">
+      <select id="langSwitcher" class="lang-select">
+        <option value="en">English</option>
+        <option value="mr">मराठी</option>
+        <option value="hi">हिंदी</option>
+      </select>
+    </div>
+  </nav>
+
+  <header>
+    <h1 data-key="title">Takmak Tok</h1>
+    <p data-key="subtitle">The Execution Point of Raigad Fort</p>
+    <div id="tutorialHint" class="tutorial-hint">
+      <div class="circle"><div class="arrow">⬇</div></div>
+      <p data-key="scrollHint">Scroll Down</p>
+    </div>
+  </header>
+
+  <div class="container">
+    <div class="card fade-in">
+      <h2 data-key="historyTitle">📜 Historical Background</h2>
+      <p data-key="historyText"><b>Takmak Tok</b> was the dreaded <b>execution point</b> of Raigad Fort. During the reign of <b>Chhatrapati Shivaji Maharaj</b>, enemies, traitors, and criminals were punished here by being thrown into the deep valley below. It symbolized <b>justice and discipline</b> in Swarajya.</p>
+    </div>
+
+    <div class="card fade-in">
+      <h2 data-key="locationTitle">🌄 Location & Structure</h2>
+      <p data-key="locationText">Situated on the <b>western edge of Raigad Fort</b>, Takmak Tok rises more than <b>1200 meters above sea level</b>. The cliff drops almost <b>1000 feet</b> straight down, making it both terrifying and breathtaking. Today, railings have been installed for tourist safety.</p>
+      <img src="./images/takmaktok.png" alt="Takmak Tok, Raigad Fort">
+    </div>
+
+    <div class="card fade-in">
+      <h2 data-key="importanceTitle">⚔️ Importance in Swarajya</h2>
+      <p data-key="importanceText">Takmak Tok served as a reminder of the <b>strict justice system</b> under Shivaji Maharaj. Public punishments here ensured that loyalty and discipline were maintained within the fort and across the empire.</p>
+    </div>
+
+    <div class="card fade-in">
+      <h2 data-key="presentTitle">🌸 Present Day</h2>
+      <p data-key="presentText">Today, Takmak Tok is a <b>tourist attraction and viewpoint</b>. From here, visitors can see spectacular views of the Konkan valleys. While the scenery is mesmerizing, the place still carries the chilling stories of its past.</p>
+    </div>
+
+    <div class="facts fade-in">
+      <h2 data-key="factsTitle">✨ Interesting Facts</h2>
+      <ul>
+        <li data-key="fact1">"Takmak" means <b>punishment</b> and "Tok" means <b>cliff</b> in Marathi.</li>
+        <li data-key="fact2">Executions here were public, to instill fear and respect for law.</li>
+        <li data-key="fact3">Today, it is one of the <b>most visited spots</b> on Raigad Fort for both history lovers and trekkers.</li>
+      </ul>
+    </div>
+  </div>
+
+  <footer>
+    ⚔ <span data-key="footerText">Digital Fort Experience | Raigad Fort QR System</span> ⚔ <br>© 2025 All Rights Reserved
+  </footer>
+
+  <script>
+    const elements = document.querySelectorAll('.fade-in');
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach(entry => { if(entry.isIntersecting){ entry.target.classList.add('visible'); } });
+    }, {threshold:0.2});
+    elements.forEach(el => observer.observe(el));
+
+    function toggleMenu(){ document.getElementById('menu').classList.toggle('open'); }
+
+    window.addEventListener("scroll", ()=>{ const hint=document.getElementById("tutorialHint"); if(hint) hint.style.display="none"; });
+    setTimeout(()=>{ const hint=document.getElementById("tutorialHint"); if(hint) hint.style.display="none"; },6000);
+
+    const translations = {
+      en:{
+        title:"Takmak Tok", subtitle:"The Execution Point of Raigad Fort", scrollHint:"Scroll Down",
+        historyTitle:"📜 Historical Background", historyText:"<b>Takmak Tok</b> was the dreaded <b>execution point</b> of Raigad Fort. During the reign of <b>Chhatrapati Shivaji Maharaj</b>, enemies, traitors, and criminals were punished here by being thrown into the deep valley below. It symbolized <b>justice and discipline</b> in Swarajya.",
+        locationTitle:"🌄 Location & Structure", locationText:"Situated on the <b>western edge of Raigad Fort</b>, Takmak Tok rises more than <b>1200 meters above sea level</b>. The cliff drops almost <b>1000 feet</b> straight down, making it both terrifying and breathtaking. Today, railings have been installed for tourist safety.",
+        importanceTitle:"⚔️ Importance in Swarajya", importanceText:"Takmak Tok served as a reminder of the <b>strict justice system</b> under Shivaji Maharaj. Public punishments here ensured that loyalty and discipline were maintained within the fort and across the empire.",
+        presentTitle:"🌸 Present Day", presentText:"Today, Takmak Tok is a <b>tourist attraction and viewpoint</b>. From here, visitors can see spectacular views of the Konkan valleys. While the scenery is mesmerizing, the place still carries the chilling stories of its past.",
+        factsTitle:"✨ Interesting Facts", fact1:"\"Takmak\" means <b>punishment</b> and \"Tok\" means <b>cliff</b> in Marathi.", fact2:"Executions here were public, to instill fear and respect for law.", fact3:"Today, it is one of the <b>most visited spots</b> on Raigad Fort for both history lovers and trekkers.",
+        footerText:"Digital Fort Experience | Raigad Fort QR System"
+      },
+      mr:{
+        title:"टाकमाक टोक", subtitle:"राजगड किल्ल्याचा फाशी स्थळ", scrollHint:"खाली स्क्रोल करा",
+        historyTitle:"📜 ऐतिहासिक पार्श्वभूमी", historyText:"<b>टाकमाक टोक</b> हा राजगड किल्ल्याचा भीतीदायक <b>फाशी स्थळ</b> होता. छत्रपती शिवाजी महाराजांच्या राज्यकाळात, शत्रू, विश्वासघाती आणि गुन्हेगारांना येथे खाली खोल दऱ्यावर टाकून शिक्षा दिली जात असे. हे <b>न्याय आणि शिस्त</b> याचे प्रतीक होते.",
+        locationTitle:"🌄 स्थान आणि रचना", locationText:"राजगड किल्ल्याच्या <b>पश्चिमी कड्यावर</b> टाकमाक टोक सुमारे <b>1200 मीटर उंच</b> उभे आहे. दरी जवळजवळ <b>1000 फूट</b> खाली सरकते. आज पर्यटकांच्या सुरक्षिततेसाठी रेलिंग बसवली आहे.",
+        importanceTitle:"⚔️ स्वराज्यात महत्त्व", importanceText:"टाकमाक टोक छत्रपती शिवाजी महाराजांच्या <b>कठोर न्याय प्रणाली</b> ची आठवण करून देतो. सार्वजनिक शिक्षा या किल्ल्यांत आणि साम्राज्यात विश्वास आणि शिस्त राखण्यास मदत करीत होती.",
+        presentTitle:"🌸 आजचे महत्त्व", presentText:"आज, टाकमाक टोक हे <b>पर्यटक आकर्षण आणि दृष्टीकोन</b> आहे. येथेुन कोकण खोऱ्यांचे भव्य दृश्य दिसते. दृश्य सुंदर असूनही, ठिकाण त्याच्या भूतकाळाच्या कहाण्या अजूनही सांगते.",
+        factsTitle:"✨ मनोरंजक तथ्ये", fact1:"\"टाकमाक\" म्हणजे <b>शिक्षा</b> आणि \"टोक\" म्हणजे <b>दरी</b>.", fact2:"इथे फाशी सार्वजनिकपणे दिली जात असे, ज्यामुळे कायद्याची भिती आणि आदर निर्माण होत असे.", fact3:"आज हे राजगड किल्ल्यावरील <b>सर्वात भेट दिलेले ठिकाण</b> आहे.", footerText:"डिजिटल फोर्ट अनुभव | राजगड किल्ला QR प्रणाली"
+      },
+      hi:{
+        title:"टाकमाक टोक", subtitle:"राजगढ़ किले का फांसी स्थल", scrollHint:"नीचे स्क्रॉल करें",
+        historyTitle:"📜 ऐतिहासिक पृष्ठभूमि", historyText:"<b>टाकमाक टोक</b> राजगढ़ किले का भयानक <b>फांसी स्थल</b> था। छत्रपति शिवाजी महाराज के शासनकाल में, शत्रु, विश्वासघाती और अपराधियों को यहाँ नीचे गहरी घाटी में फेंककर सजा दी जाती थी। यह <b>न्याय और अनुशासन</b> का प्रतीक था।",
+        locationTitle:"🌄 स्थान और संरचना", locationText:"राजगढ़ किले के <b>पश्चिमी किनारे</b> पर टाकमाक टोक लगभग <b>1200 मीटर ऊँचा</b> है। चट्टान लगभग <b>1000 फीट</b> सीधी नीचे गिरती है। आज पर्यटकों की सुरक्षा के लिए रेलिंग लगाई गई है।",
+        importanceTitle:"⚔️ स्वराज्य में महत्व", importanceText:"टाकमाक टोक छत्रपति शिवाजी महाराज की <b>कठोर न्याय प्रणाली</b> की याद दिलाता है। सार्वजनिक सजा से किले और साम्राज्य में वफादारी और अनुशासन बनाए रखा जाता था।",
+        presentTitle:"🌸 वर्तमान स्थिति", presentText:"आज, टाकमाक टोक <b>पर्यटक आकर्षण और दृश्य बिंदु</b> है। यहाँ से, आगंतुक कोकण घाटियों का भव्य दृश्य देख सकते हैं। दृश्य मनमोहक है, फिर भी यह स्थान अपने भूतकाल की कहानियाँ रखता है।",
+        factsTitle:"✨ रोचक तथ्य", fact1:"\"टाकमाक\" का मतलब <b>सजा</b> और \"टोक\" का मतलब <b>चट्टान</b> है।", fact2:"यहाँ फांसी सार्वजनिक रूप से दी जाती थी, जिससे कानून का डर और सम्मान पैदा होता था।", fact3:"आज यह राजगढ़ किले के <b>सबसे अधिक देखे जाने वाले स्थलों</b> में से एक है।",
+        footerText:"डिजिटल किला अनुभव | राजगढ़ किला QR प्रणाली"
+      }
+    };
+
+    document.getElementById('langSwitcher').addEventListener('change', ()=>{
+      const lang = document.getElementById('langSwitcher').value;
+      document.querySelectorAll('[data-key]').forEach(el=>{
+        const key = el.getAttribute('data-key');
+        if(translations[lang][key]) el.innerHTML = translations[lang][key];
+      });
+    });
+  </script>
+</body>
+</html>

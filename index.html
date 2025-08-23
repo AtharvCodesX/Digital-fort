@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Maha Darwaja - Raigad Fort</title>
+  <style>
+    /* Reset */
+    * {margin:0; padding:0; box-sizing:border-box;}
+    body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background: #fff8f0; color: #222; line-height: 1.6; }
+
+    /* Hero Section */
+    header {
+      background: url("https://upload.wikimedia.org/wikipedia/commons/5/5d/Maha_Darwaja%2C_Raigad_Fort.jpg") no-repeat center center/cover;
+      height: 100vh;
+      display:flex; flex-direction:column; justify-content:flex-start; align-items:center;
+      color: white; text-align: center; position:relative; padding-top: 100px;
+    }
+    header::after {
+      content:""; position:absolute; top:0; left:0; width:100%; height:100%;
+      background: rgba(194,65,12,0.65); z-index:0;
+    }
+    header h1, header p {
+      position: relative; z-index: 1; display: inline-block; max-width: 90%;
+      padding: 6px 18px; border-radius: 25px; text-shadow: 2px 2px 8px rgba(0,0,0,0.7); margin: 5px auto;
+    }
+    header h1 { font-size: 2.5rem; background: rgba(128,0,0,0.7); }
+    header p { font-size: 1.1rem; background: rgba(255,140,0,0.85); }
+
+    /* Scroll Hint */
+    .tutorial-hint { position: absolute; top: 55%; left: 50%; transform: translateX(-50%); text-align: center; z-index: 5; animation: fadeIn 1s ease-in-out; }
+    .tutorial-hint p { margin: 10px 0 0; font-size: 1.1rem; font-weight: bold; color: #fff; text-shadow: 0 0 8px rgba(0,0,0,0.8); }
+    .tutorial-hint .circle { width: 85px; height: 85px; border-radius: 50%; background: rgba(249, 211, 66, 0.2); border: 3px solid #f9d342; display: flex; justify-content: center; align-items: center; animation: pulse 1.5s infinite; margin: auto; }
+    .tutorial-hint .arrow { font-size: 3.5rem; color: #f9d342; animation: bounceArrow 1s infinite; text-shadow: 0 0 18px rgba(249,211,66,1); }
+    @keyframes bounceArrow { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(12px); } }
+    @keyframes pulse { 0% { transform: scale(1); opacity: 1; } 70% { transform: scale(1.3); opacity: 0.4; } 100% { transform: scale(1); opacity: 1; } }
+    @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+
+    /* Section Styling */
+    .container { max-width:1100px; margin:auto; padding:60px 20px; }
+    h2 { font-size:2rem; color:#c0392b; margin-bottom:15px; border-left:6px solid #e67e22; padding-left:10px; }
+    .card { background:#fff3e0; border-radius:12px; box-shadow:0 4px 15px rgba(0,0,0,0.2); padding:25px; margin:20px 0; transition: transform 0.3s; }
+    .card:hover {transform:scale(1.02);}
+    .card img {width:100%; border-radius:12px; margin-top:15px;}
+
+    /* Facts Section */
+    .facts { background: linear-gradient(135deg, #e67e22, #c0392b); color:white; border-radius:12px; padding:30px; margin-top:40px; box-shadow:0 4px 20px rgba(0,0,0,0.3); }
+    .facts ul {margin:15px 0 0 20px;}
+
+    /* Footer */
+    footer { background:#800000; color:white; text-align:center; padding:20px; margin-top:50px; }
+
+    /* Animation */
+    .fade-in { opacity:0; transform: translateY(20px); transition: all 0.8s ease-in-out; }
+    .fade-in.visible { opacity:1; transform: translateY(0); }
+
+    @media(max-width:768px){ header h1 {font-size:2rem;} header p {font-size:1rem;} }
+
+    /* Toggle Menu Styles */
+    .site-nav{ position: sticky; top:0; left:0; width:100%; display:flex; align-items:center; justify-content:space-between; padding: 10px 16px; background: linear-gradient(135deg, #8b0000, #e67e22); color: #fff; z-index: 1000; box-shadow: 0 2px 10px rgba(0,0,0,0.2);}
+    .site-nav h2{ font-size:1.25rem; color:#f9d342; margin:0; }
+    .site-nav .menu-toggle{ display:none; font-size:1rem; background:transparent; border:none; color:#fff; cursor:pointer; }
+    .site-nav ul{ list-style:none; display:flex; flex-wrap:wrap; gap:10px; margin:0; padding:0; }
+    .site-nav ul li a{ display:inline-block; padding:8px 12px; border-radius:999px; text-decoration:none; color:#fff; background: rgba(255,255,255,0.1); }
+    .site-nav ul li a:hover{ background: rgba(255,255,255,0.2); }
+    @media (max-width: 768px){ .site-nav{ flex-wrap:wrap; } .site-nav .menu-toggle{ display:block; } .site-nav ul{ width:100%; display:none; flex-direction:column; gap:8px; margin-top:8px; } .site-nav ul.open{ display:flex; } }
+
+    /* Language Dropdown */
+    .lang-container { display: flex; align-items: center; gap: 5px; font-weight: bold; color: #f9d342; }
+    .lang-select { padding: 6px 12px; border-radius: 8px; border: 2px solid #f9d342; background: #fff; color: #000; font-weight: bold; font-size: 1rem; cursor: pointer; box-shadow: 0 0 8px rgba(249,211,66,0.6); transition: all 0.3s ease; }
+    .lang-select:hover { box-shadow: 0 0 14px rgba(249,211,66,1); transform: scale(1.05); }
+  </style>
+</head>
+<body>
+  <!-- Mobile-friendly Navigation -->
+  <nav class="site-nav">
+    <h2>Raigad Fort</h2>
+    <button class="menu-toggle" aria-label="Toggle menu" onclick="toggleMenu()">Menu ☰</button>
+    <ul id="menu">
+      <li><a href="index.html">🏰 Maha Darwaja</a></li>
+      <li><a href="rani-vasa.html">👑 Rani Vasa</a></li>
+      <li><a href="samadhi.html">⚔️ Samadhi</a></li>
+      <li><a href="temple.html">🕉️ Temple</a></li>
+      <li><a href="rajbhavan.html">🏛️ Raj Bhavan</a></li>
+      <li><a href="takmaktok.html">⛰️ Takmak Tok</a></li>
+      <li><a href="gangasagar.html">💧 Gangasagar Lake</a></li>
+      <li><a href="chordarwaja.html">🚪 Chor Darwaja</a></li>
+      <li><a href="balekilla.html">🏯 Bale Killa</a></li>
+      <li><a href="buruj.html">🌄 Hirkani Buruj</a></li>
+    </ul>
+    <!-- Language Toggle -->
+    <div class="lang-container">
+      <select id="langSwitcher" class="lang-select">
+        <option value="en">English</option>
+        <option value="mr">मराठी</option>
+        <option value="hi">हिंदी</option>
+      </select>
+    </div>
+  </nav>
+
+  <!-- Hero Section -->
+  <header>
+    <h1 data-key="title">Maha Darwaja</h1>
+    <p data-key="subtitle">The Great Entrance of Raigad Fort</p>
+
+    <!-- Scroll Hint -->
+    <div id="tutorialHint" class="tutorial-hint">
+      <div class="circle">
+        <div class="arrow">⬇</div>
+      </div>
+      <p data-key="scrollHint">Scroll Down</p>
+    </div>
+  </header>
+
+  <!-- Content -->
+  <div class="container fade-in">
+    <div class="card">
+      <h2 data-key="historyTitle">📜 Historical Significance</h2>
+      <p data-key="historyText1">
+        The <b>Maha Darwaja</b> (Great Gate) is the grand main entrance of 
+        <b>Raigad Fort</b>, built under the rule of <b>Chhatrapati Shivaji Maharaj</b> 
+        in the 17th century. It was designed as a symbol of Maratha power, 
+        with massive stone walls and strong wooden doors.
+      </p>
+      <p data-key="historyText2">
+        The gate was built in such a way that war elephants or enemy forces 
+        could not easily break in.
+      </p>
+    </div>
+
+    <div class="card fade-in">
+      <h2 data-key="archTitle">🏰 Architecture</h2>
+      <p data-key="archText">
+        The entrance consists of <b>two huge bastions</b> (about 65–70 feet high). 
+        The doors are covered with <b>iron spikes</b> to stop elephant charges. 
+        The gateway opens into a narrow passage, making it difficult for 
+        large enemy groups to enter at once.
+      </p>
+      <img src="./images/maha darwaja.jpg" alt="Maha Darwaja, Raigad Fort">
+    </div>
+
+    <div class="facts fade-in">
+      <h2 data-key="factsTitle">✨ Interesting Facts</h2>
+      <ul>
+        <li data-key="fact1">The Maha Darwaja is so strategically built that even today it amazes engineers.</li>
+        <li data-key="fact2">This was the main entrance to the capital of the Maratha Empire.</li>
+        <li data-key="fact3">It remains one of the most iconic symbols of Maratha pride and defense strategy.</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <footer>
+    ⚔ <span data-key="footerText">Digital Fort Experience | Raigad Fort QR System</span> ⚔ <br>
+    © 2025 All Rights Reserved
+  </footer>
+
+  <script>
+    // Scroll animations
+    const elements = document.querySelectorAll('.fade-in');
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach(entry => { if(entry.isIntersecting){ entry.target.classList.add('visible'); } });
+    }, {threshold:0.2});
+    elements.forEach(el => observer.observe(el));
+
+    // Toggle Menu Script
+    function toggleMenu(){
+      var m = document.getElementById('menu');
+      if(m){ m.classList.toggle('open'); }
+    }
+
+    // Hide scroll hint on scroll or after 6s
+    window.addEventListener("scroll", () => {
+      const hint = document.getElementById("tutorialHint");
+      if(hint) hint.style.display = "none";
+    });
+    setTimeout(() => {
+      const hint = document.getElementById("tutorialHint");
+      if(hint) hint.style.display = "none";
+    }, 6000);
+
+    // Language translations
+    const translations = {
+      en: {
+        title: "Maha Darwaja",
+        subtitle: "The Great Entrance of Raigad Fort",
+        scrollHint: "Scroll Down",
+        historyTitle: "📜 Historical Significance",
+        historyText1: "The <b>Maha Darwaja</b> (Great Gate) is the grand main entrance of <b>Raigad Fort</b>, built under the rule of <b>Chhatrapati Shivaji Maharaj</b> in the 17th century. It was designed as a symbol of Maratha power, with massive stone walls and strong wooden doors.",
+        historyText2: "The gate was built in such a way that war elephants or enemy forces could not easily break in.",
+        archTitle: "🏰 Architecture",
+        archText: "The entrance consists of <b>two huge bastions</b> (about 65–70 feet high). The doors are covered with <b>iron spikes</b> to stop elephant charges. The gateway opens into a narrow passage, making it difficult for large enemy groups to enter at once.",
+        factsTitle: "✨ Interesting Facts",
+        fact1: "The Maha Darwaja is so strategically built that even today it amazes engineers.",
+        fact2: "This was the main entrance to the capital of the Maratha Empire.",
+        fact3: "It remains one of the most iconic symbols of Maratha pride and defense strategy.",
+        footerText: "Digital Fort Experience | Raigad Fort QR System"
+      },
+      mr: {
+        title: "महादरवाजा",
+        subtitle: "रायगड किल्ल्याचा भव्य प्रवेशद्वार",
+        scrollHint: "खाली स्क्रोल करा",
+        historyTitle: "📜 ऐतिहासिक महत्त्व",
+        historyText1: "<b>महादरवाजा</b> (ग्रेट गेट) हा <b>रायगड किल्ला</b> चा भव्य मुख्य प्रवेशद्वार आहे, जो <b>छत्रपती शिवाजी महाराज</b> यांच्या काळात 17 व्या शतकात बांधला गेला. हे मराठा सामर्थ्याचे प्रतीक आहे, ज्यामध्ये भव्य दगडी भिंती आणि मजबूत लाकडी दरवाजे आहेत.",
+        historyText2: "दरवाजा अशा प्रकारे बांधला गेला की युद्ध हत्ती किंवा शत्रूच्या सैन्यांना सहज तोडता येत नाही.",
+        archTitle: "🏰 वास्तुकला",
+        archText: "प्रवेशद्वारात <b>दोन मोठे किल्ले</b> (सुमारे 65–70 फूट उंच) आहेत. दरवाज्यावर <b>लोखंडाचे नखे</b> लावले आहेत जे हत्तीच्या आक्रमणाला थांबवतात. गेटवे एक अरुंद मार्गात उघडतो, ज्यामुळे मोठ्या शत्रू गटांना सहज प्रवेश करता येत नाही.",
+        factsTitle: "✨ मनोरंजक तथ्ये",
+        fact1: "महादरवाजा इतका रणनीतिकरीत्या बांधला आहे की आजही अभियंत्यांना आश्चर्य वाटते.",
+        fact2: "हा मराठा साम्राज्याच्या राजधानीत मुख्य प्रवेशद्वार होता.",
+        fact3: "हा मराठा अभिमान आणि संरक्षण धोरणाचा एक अत्यंत प्रसिद्ध प्रतीक आहे.",
+        footerText: "डिजिटल फोर्ट अनुभव | रायगड किल्ला QR प्रणाली"
+      },
+      hi: {
+        title: "महादरवाजा",
+        subtitle: "रायगढ़ किले का भव्य प्रवेश द्वार",
+        scrollHint: "नीचे स्क्रॉल करें",
+        historyTitle: "📜 ऐतिहासिक महत्व",
+        historyText1: "<b>महादरवाजा</b> (ग्रेट गेट) रायगढ़ किले का भव्य मुख्य प्रवेश द्वार है, जो <b>छत्रपति शिवाजी महाराज</b> के शासनकाल में 17वीं सदी में बनाया गया था। यह मराठा शक्ति का प्रतीक है, जिसमें विशाल पत्थर की दीवारें और मजबूत लकड़ी के दरवाजे हैं।",
+        historyText2: "दरवाजा इस तरह बनाया गया था कि युद्ध हाथी या शत्रु सेना आसानी से प्रवेश न कर सके।",
+        archTitle: "🏰 वास्तुकला",
+        archText: "प्रवेश द्वार में <b>दो विशाल किले</b> (लगभग 65–70 फीट ऊँचाई) हैं। दरवाजे पर <b>लोहे के नाख़</b> लगे हैं जो हाथी के आक्रमण को रोकते हैं। गेटवे एक संकीर्ण मार्ग में खुलता है, जिससे बड़ी शत्रु टुकड़ी आसानी से प्रवेश न कर सके।",
+        factsTitle: "✨ रोचक तथ्य",
+        fact1: "महादरवाजा इतनी रणनीतिक रूप से बनाया गया है कि आज भी इंजीनियर आश्चर्यचकित होते हैं।",
+        fact2: "यह मराठा साम्राज्य की राजधानी का मुख्य प्रवेश द्वार था।",
+        fact3: "यह मराठा गर्व और रक्षा रणनीति का सबसे प्रसिद्ध प्रतीक है।",
+        footerText: "डिजिटल फोर्ट अनुभव | रायगढ़ किला QR सिस्टम"
+      }
+    };
+
+    const switchLanguage = (lang) => {
+      document.querySelectorAll('[data-key]').forEach(el => {
+        const key = el.getAttribute('data-key');
+        if(translations[lang][key]) el.innerHTML = translations[lang][key];
+      });
+    };
+
+    const langSelector = document.getElementById('langSwitcher');
+    langSelector.addEventListener('change', () => switchLanguage(langSelector.value));
+  </script>
+</body>
+</html>

@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Chor Darwaja - Raigad Fort</title>
+  <style>
+    *{margin:0;padding:0;box-sizing:border-box;}
+    body{font-family:'Segoe UI',Tahoma,Geneva,Verdana,sans-serif;background:#fff8f0;color:#222;line-height:1.6;}
+    header{background:url("https://upload.wikimedia.org/wikipedia/commons/8/8d/Chor_Darwaza%2C_Raigad_Fort.jpg") no-repeat center center/cover;height:100vh;display:flex;flex-direction:column;justify-content:flex-start;align-items:center;color:white;text-align:center;position:relative;padding-top:120px;}
+    header::after{content:"";position:absolute;top:0;left:0;width:100%;height:100%;background:rgba(194,65,12,0.65);z-index:0;}
+    header h1,header p{position:relative;z-index:1;display:inline-block;padding:6px 18px;border-radius:25px;text-shadow:2px 2px 8px rgba(0,0,0,0.7);margin:5px auto;}
+    header h1{font-size:2.5rem;background:rgba(128,0,0,0.7);}
+    header p{font-size:1.1rem;background:rgba(255,140,0,0.85);}
+    .tutorial-hint{position:absolute;top:55%;left:50%;transform:translateX(-50%);text-align:center;z-index:5;animation:fadeIn 1s ease-in-out;}
+    .tutorial-hint p{margin:10px 0 0;font-size:1.1rem;font-weight:bold;color:#fff;text-shadow:0 0 8px rgba(0,0,0,0.8);}
+    .tutorial-hint .circle{width:85px;height:85px;border-radius:50%;background:rgba(249,211,66,0.2);border:3px solid #f9d342;display:flex;justify-content:center;align-items:center;animation:pulse 1.5s infinite;margin:auto;}
+    .tutorial-hint .arrow{font-size:3.5rem;color:#f9d342;animation:bounceArrow 1s infinite;text-shadow:0 0 18px rgba(249,211,66,1);}
+    @keyframes bounceArrow{0%,100%{transform:translateY(0);}50%{transform:translateY(12px);}}
+    @keyframes pulse{0%{transform:scale(1);opacity:1;}70%{transform:scale(1.3);opacity:0.4;}100%{transform:scale(1);opacity:1;}}
+    @keyframes fadeIn{from{opacity:0;}to{opacity:1;}}
+    .container{max-width:1100px;margin:auto;padding:60px 20px;}
+    h2{font-size:2rem;color:#c0392b;margin-bottom:15px;border-left:6px solid #e67e22;padding-left:10px;}
+    .card{background:#fff3e0;border-radius:12px;box-shadow:0 4px 15px rgba(0,0,0,0.2);padding:25px;margin:20px 0;}
+    .card img{width:100%;border-radius:12px;margin-top:15px;}
+    .facts{background:linear-gradient(135deg,#e67e22,#c0392b);color:white;border-radius:12px;padding:30px;margin-top:40px;}
+    .facts ul{margin:15px 0 0 20px;}
+    footer{background:#800000;color:white;text-align:center;padding:20px;margin-top:50px;}
+    .fade-in{opacity:0;transform:translateY(20px);transition:all 0.8s ease-in-out;}
+    .fade-in.visible{opacity:1;transform:translateY(0);}
+    .site-nav{position:sticky;top:0;left:0;width:100%;display:flex;align-items:center;justify-content:space-between;padding:10px 16px;background:linear-gradient(135deg,#8b0000,#e67e22);color:#fff;z-index:1000;box-shadow:0 2px 10px rgba(0,0,0,0.2);}
+    .site-nav h2{font-size:1.25rem;color:#f9d342;margin:0;}
+    .site-nav .menu-toggle{display:none;font-size:1rem;background:transparent;border:none;color:#fff;cursor:pointer;}
+    .site-nav ul{list-style:none;display:flex;flex-wrap:wrap;gap:10px;margin:0;padding:0;}
+    .site-nav ul li a{display:inline-block;padding:8px 12px;border-radius:999px;text-decoration:none;color:#fff;background:rgba(255,255,255,0.1);}
+    .site-nav ul li a:hover{background:rgba(255,255,255,0.2);}
+    @media(max-width:768px){.site-nav{flex-wrap:wrap;}.site-nav .menu-toggle{display:block;}.site-nav ul{width:100%;display:none;flex-direction:column;gap:8px;margin-top:8px;}.site-nav ul.open{display:flex;}}
+    .lang-container{display:flex;align-items:center;gap:5px;font-weight:bold;color:#f9d342;}
+    .lang-select{padding:6px 12px;border-radius:8px;border:2px solid #f9d342;background:#fff;color:#000;font-weight:bold;font-size:1rem;cursor:pointer;box-shadow:0 0 8px rgba(249,211,66,0.6);transition:all 0.3s ease;}
+    .lang-select:hover{box-shadow:0 0 14px rgba(249,211,66,1);transform:scale(1.05);}
+  </style>
+</head>
+<body>
+  <nav class="site-nav">
+    <h2>Raigad Fort</h2>
+    <button class="menu-toggle" onclick="toggleMenu()">Menu ☰</button>
+    <ul id="menu">
+      <li><a href="index.html">🏰 Maha Darwaja</a></li>
+      <li><a href="rani-vasa.html">👑 Rani Vasa</a></li>
+      <li><a href="samadhi.html">⚔️ Samadhi</a></li>
+      <li><a href="temple.html">🕉️ Temple</a></li>
+      <li><a href="rajbhavan.html">🏛️ Raj Bhavan</a></li>
+      <li><a href="takmaktok.html">⛰️ Takmak Tok</a></li>
+      <li><a href="gangasagar.html">💧 Gangasagar Lake</a></li>
+      <li><a href="chordarwaja.html">🚪 Chor Darwaja</a></li>
+      <li><a href="balekilla.html">🏯 Bale Killa</a></li>
+      <li><a href="buruj.html">🌄 Hirkani Buruj</a></li>
+    </ul>
+    <div class="lang-container">
+      <select id="langSwitcher" class="lang-select">
+        <option value="en">English</option>
+        <option value="mr">मराठी</option>
+        <option value="hi">हिंदी</option>
+      </select>
+    </div>
+  </nav>
+
+  <header>
+    <h1 data-key="title">Chor Darwaja</h1>
+    <p data-key="subtitle">The Secret Escape Gate of Raigad Fort</p>
+    <div id="tutorialHint" class="tutorial-hint">
+      <div class="circle"><div class="arrow">⬇</div></div>
+      <p data-key="scrollHint">Scroll Down</p>
+    </div>
+  </header>
+
+  <div class="container">
+    <div class="card fade-in">
+      <h2 data-key="historyTitle">📜 Historical Background</h2>
+      <p data-key="historyText">The <b>Chor Darwaja</b> (Secret Gate) was one of the most important <b>hidden passages</b> of Raigad Fort. It was used in emergencies to escape or launch surprise attacks against enemies. Its existence showed the <b>strategic genius</b> of Shivaji Maharaj.</p>
+    </div>
+
+    <div class="card fade-in">
+      <h2 data-key="locationTitle">🏰 Location & Structure</h2>
+      <p data-key="locationText">This secret gate is located on the <b>southern side of the fort</b>. It is narrow, hidden behind rocky terrain, and opens into steep valleys below. Because of its position, it was almost impossible for enemies to detect or use it.</p>
+      <img src="./images/chordarwaja.jpg" alt="Chor Darwaja, Raigad Fort">
+    </div>
+
+    <div class="card fade-in">
+      <h2 data-key="strategyTitle">⚔️ Strategic Importance</h2>
+      <p data-key="strategyText">Chor Darwaja gave the Marathas a huge tactical advantage. In times of siege, it could be used for <b>supplies, reinforcements, or safe evacuation</b>. It also allowed secret movements without enemy knowledge.</p>
+    </div>
+
+    <div class="card fade-in">
+      <h2 data-key="presentTitle">🌸 Present Day</h2>
+      <p data-key="presentText">Today, Chor Darwaja is a fascinating spot for trekkers and history lovers. The passage is partly ruined but still visible, reminding visitors of the clever military planning of Shivaji Maharaj’s era.</p>
+    </div>
+
+    <div class="facts fade-in">
+      <h2 data-key="factsTitle">✨ Interesting Facts</h2>
+      <ul>
+        <li data-key="fact1">“Chor” means <b>secret/hidden</b> in Marathi, not thief here.</li>
+        <li data-key="fact2">It was a hidden lifeline during enemy blockades.</li>
+        <li data-key="fact3">The gate is now secured but remains a must-visit for trekkers exploring Raigad.</li>
+      </ul>
+    </div>
+  </div>
+
+  <footer>⚔ Digital Fort Experience | Raigad Fort QR System ⚔ <br>© 2025 All Rights Reserved</footer>
+
+  <script>
+    const elements = document.querySelectorAll('.fade-in');
+    const observer = new IntersectionObserver(entries=>{entries.forEach(entry=>{if(entry.isIntersecting){entry.target.classList.add('visible');}});},{threshold:0.2});
+    elements.forEach(el=>observer.observe(el));
+
+    function toggleMenu(){ document.getElementById('menu').classList.toggle('open'); }
+
+    window.addEventListener("scroll",()=>{ const hint=document.getElementById("tutorialHint"); if(hint) hint.style.display="none"; });
+    setTimeout(()=>{ const hint=document.getElementById("tutorialHint"); if(hint) hint.style.display="none"; },6000);
+
+    const langData={
+      mr:{
+        title:"चोर दरवाजा", subtitle:"रायगड किल्ल्याचा गुप्त पलायन दरवाजा", scrollHint:"खाली स्क्रोल करा",
+        historyTitle:"📜 ऐतिहासिक पार्श्वभूमी", historyText:"<b>चोर दरवाजा</b> (गुप्त दरवाजा) रायगड किल्ल्याच्या महत्त्वाच्या <b>लपवलेल्या मार्गांपैकी</b> एक होता. आपत्कालीन परिस्थितीत किंवा शत्रूंवर अचानक हल्ला करण्यासाठी वापरला जात असे. यामुळे शिवाजी महाराजांच्या <b>सामरिक कुशलतेचे</b> दर्शन घडले.",
+        locationTitle:"🏰 ठिकाण व रचना", locationText:"हा गुप्त दरवाजा किल्ल्याच्या <b>दक्षिण बाजूला</b> आहे. तो अरुंद, दगडी भागामागे लपलेला असून खाली खोल दऱ्यांमध्ये उघडतो. या स्थितीमुळे शत्रूंना शोधणे किंवा वापरणे जवळजवळ अशक्य होते.",
+        strategyTitle:"⚔️ सामरिक महत्त्व", strategyText:"चोर दरवाजामुळे मराठ्यांना मोठा सामरिक फायदा मिळाला. अडथळ्याच्या काळात, हा <b>सप्लाय, बळ, किंवा सुरक्षित पलायनासाठी</b> वापरला जाऊ शकतो. यामुळे गुप्त हालचाली शक्य झाल्या.",
+        presentTitle:"🌸 आजची स्थिती", presentText:"आज चोर दरवाजा ट्रेकर्स आणि इतिहासप्रेमींसाठी आकर्षक स्थळ आहे. मार्ग काही भागात नष्ट झाला आहे परंतु अजूनही दिसतो, शिवाजी महाराजांच्या सामरिक नियोजनाची आठवण करून देतो.",
+        factsTitle:"✨ मनोरंजक तथ्ये", fact1:"“चोर” म्हणजे येथे चोरी नाही, तर <b>गुप्त/लपलेला</b>.", fact2:"शत्रूच्या अडथळ्याच्या काळात हा गुप्त जीवनरेषा होता.", fact3:"दरवाजा सुरक्षित केला गेला आहे परंतु रायगडचा शोध घेणाऱ्या ट्रेकर्ससाठी हे पाहणे आवश्यक आहे."
+      },
+      hi:{
+        title:"चोर दरवाजा", subtitle:"रायगड़ किले का गुप्त पलायन द्वार", scrollHint:"नीचे स्क्रॉल करें",
+        historyTitle:"📜 ऐतिहासिक पृष्ठभूमि", historyText:"<b>चोर दरवाजा</b> (गुप्त द्वार) रायगड़ किले के सबसे महत्वपूर्ण <b>छुपे हुए मार्गों</b> में से एक था। आपातकाल में या दुश्मनों पर अचानक हमला करने के लिए इसका इस्तेमाल किया जाता था। इसकी उपस्थिति ने शिवाजी महाराज की <b>सामरिक प्रतिभा</b> दिखाई।",
+        locationTitle:"🏰 स्थान और संरचना", locationText:"यह गुप्त द्वार किले के <b>दक्षिणी हिस्से</b> में स्थित है। यह संकरा है, चट्टानी इलाके के पीछे छिपा है और नीचे की खड़ी घाटियों में खुलता है। स्थिति के कारण, दुश्मनों के लिए इसे देखना या इस्तेमाल करना लगभग असंभव था।",
+        strategyTitle:"⚔️ सामरिक महत्व", strategyText:"चोर दरवाजा मराठाओं को बड़ी रणनीतिक लाभ देता था। घेराबंदी के समय, इसे <b>सप्लाई, बल या सुरक्षित निकासी</b> के लिए इस्तेमाल किया जा सकता था। यह गुप्त गतिविधियों की अनुमति भी देता था।",
+        presentTitle:"🌸 वर्तमान स्थिति", presentText:"आज, चोर दरवाजा ट्रेकर्स और इतिहास प्रेमियों के लिए आकर्षक स्थल है। मार्ग आंशिक रूप से बर्बाद हो गया है लेकिन अभी भी दिखाई देता है, शिवाजी महाराज की स्मार्ट सैन्य योजना की याद दिलाता है।",
+        factsTitle:"✨ रोचक तथ्य", fact1:"“चोर” यहाँ चोर नहीं, बल्कि <b>गुप्त/छिपा</b> का अर्थ है।", fact2:"यह दुश्मन अवरोधों के दौरान एक गुप्त जीवनरेखा था।", fact3:"दरवाजा अब सुरक्षित है लेकिन रायगढ़ का अन्वेषण करने वाले ट्रेकर्स के लिए यह अवश्य देखना चाहिए।"
+      }
+    };
+
+    document.getElementById("langSwitcher").addEventListener("change", function(){
+      const lang=this.value;
+      document.querySelectorAll("[data-key]").forEach(el=>{
+        const key=el.getAttribute("data-key");
+        if(langData[lang] && langData[lang][key]) el.innerHTML=langData[lang][key];
+      });
+    });
+  </script>
+</body>
+</html>

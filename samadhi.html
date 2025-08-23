@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Shivaji Maharaj Samadhi - Raigad Fort</title>
+  <style>
+    * {margin:0; padding:0; box-sizing:border-box;}
+    body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background: #fff8f0; color: #222; line-height: 1.6; }
+
+    header {
+      background: url("https://upload.wikimedia.org/wikipedia/commons/0/0a/Samadhisthal_of_Shivaji_Maharaj_at_Raigad_Fort.jpg") no-repeat center center/cover;
+      height: 100vh;
+      display:flex; flex-direction:column; justify-content:flex-start; align-items:center;
+      color: white; text-align: center; position:relative;
+      padding-top: 120px;
+    }
+    header::after {
+      content:""; position:absolute; top:0; left:0; width:100%; height:100%;
+      background: rgba(194,65,12,0.65); z-index:0;
+    }
+    header h1, header p {
+      position: relative; z-index: 1; display: inline-block;
+      padding: 6px 18px; border-radius: 25px;
+      text-shadow: 2px 2px 8px rgba(0,0,0,0.7);
+      margin: 5px auto;
+    }
+    header h1 {font-size: 2.5rem; background: rgba(128,0,0,0.7);}
+    header p {font-size: 1.1rem; background: rgba(255,140,0,0.85);}
+
+    /* Scroll Hint */
+    .tutorial-hint { position: absolute; top: 55%; left: 50%; transform: translateX(-50%); text-align: center; z-index: 5; animation: fadeIn 1s ease-in-out; }
+    .tutorial-hint p { margin: 10px 0 0; font-size: 1.1rem; font-weight: bold; color: #fff; text-shadow: 0 0 8px rgba(0,0,0,0.8); }
+    .tutorial-hint .circle { width: 85px; height: 85px; border-radius: 50%; background: rgba(249, 211, 66, 0.2); border: 3px solid #f9d342; display: flex; justify-content: center; align-items: center; animation: pulse 1.5s infinite; margin: auto; }
+    .tutorial-hint .arrow { font-size: 3.5rem; color: #f9d342; animation: bounceArrow 1s infinite; text-shadow: 0 0 18px rgba(249,211,66,1); }
+    @keyframes bounceArrow { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(12px); } }
+    @keyframes pulse { 0% { transform: scale(1); opacity: 1; } 70% { transform: scale(1.3); opacity: 0.4; } 100% { transform: scale(1); opacity: 1; } }
+    @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+
+    .container {max-width:1100px; margin:auto; padding:60px 20px;}
+    h2 {font-size:2rem; color:#c0392b; margin-bottom:15px; border-left:6px solid #e67e22; padding-left:10px;}
+    .card {background:#fff3e0; border-radius:12px; box-shadow:0 4px 15px rgba(0,0,0,0.2); padding:25px; margin:20px 0;}
+    .card img {width:100%; border-radius:12px; margin-top:15px;}
+    .facts {background: linear-gradient(135deg, #e67e22, #c0392b); color:white; border-radius:12px; padding:30px; margin-top:40px;}
+    .facts ul {margin:15px 0 0 20px;}
+    footer {background:#800000; color:white; text-align:center; padding:20px; margin-top:50px;}
+
+    /* Animation */
+    .fade-in {opacity: 0; transform: translateY(20px); transition: all 0.8s ease-in-out;}
+    .fade-in.visible {opacity: 1; transform: translateY(0);}
+
+    /* Toggle Menu Styles */
+    .site-nav{
+      position: sticky; top:0; left:0; width:100%;
+      display:flex; align-items:center; justify-content:space-between;
+      padding: 10px 16px;
+      background: linear-gradient(135deg, #8b0000, #e67e22);
+      color: #fff; z-index: 1000;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.2);
+    }
+    .site-nav h2{ font-size:1.25rem; color:#f9d342; margin:0; }
+    .site-nav .menu-toggle{ display:none; font-size:1rem; background:transparent; border:none; color:#fff; cursor:pointer; }
+    .site-nav ul{ list-style:none; display:flex; flex-wrap:wrap; gap:10px; margin:0; padding:0; }
+    .site-nav ul li a{ display:inline-block; padding:8px 12px; border-radius:999px; text-decoration:none; color:#fff; background: rgba(255,255,255,0.1); }
+    .site-nav ul li a:hover{ background: rgba(255,255,255,0.2); }
+    @media (max-width: 768px){
+      .site-nav{ flex-wrap:wrap; }
+      .site-nav .menu-toggle{ display:block; }
+      .site-nav ul{ width:100%; display:none; flex-direction:column; gap:8px; margin-top:8px; }
+      .site-nav ul.open{ display:flex; }
+    }
+
+    /* Language Dropdown */
+    .lang-container { display: flex; align-items: center; gap: 5px; font-weight: bold; color: #f9d342; }
+    .lang-select { padding: 6px 12px; border-radius: 8px; border: 2px solid #f9d342; background: #fff; color: #000; font-weight: bold; font-size: 1rem; cursor: pointer; box-shadow: 0 0 8px rgba(249,211,66,0.6); transition: all 0.3s ease; }
+    .lang-select:hover { box-shadow: 0 0 14px rgba(249,211,66,1); transform: scale(1.05); }
+  </style>
+</head>
+<body>
+  <!-- Mobile-friendly Navigation -->
+  <nav class="site-nav">
+    <h2>Raigad Fort</h2>
+    <button class="menu-toggle" aria-label="Toggle menu" onclick="toggleMenu()">Menu ☰</button>
+    <ul id="menu">
+      <li><a href="index.html">🏰 Maha Darwaja</a></li>
+      <li><a href="rani-vasa.html">👑 Rani Vasa</a></li>
+      <li><a href="samadhi.html">⚔️ Samadhi</a></li>
+      <li><a href="temple.html">🕉️ Temple</a></li>
+      <li><a href="rajbhavan.html">🏛️ Raj Bhavan</a></li>
+      <li><a href="takmaktok.html">⛰️ Takmak Tok</a></li>
+      <li><a href="gangasagar.html">💧 Gangasagar Lake</a></li>
+      <li><a href="chordarwaja.html">🚪 Chor Darwaja</a></li>
+      <li><a href="balekilla.html">🏯 Bale Killa</a></li>
+      <li><a href="buruj.html">🌄 Hirkani Buruj</a></li>
+    </ul>
+    <!-- Language Toggle -->
+    <div class="lang-container">
+      <select id="langSwitcher" class="lang-select">
+        <option value="en">English</option>
+        <option value="mr">मराठी</option>
+        <option value="hi">हिंदी</option>
+      </select>
+    </div>
+  </nav>
+
+  <!-- Hero Section -->
+  <header>
+    <h1 data-key="title">Shivaji Maharaj Samadhi</h1>
+    <p data-key="subtitle">The Eternal Memorial at Raigad Fort</p>
+
+    <!-- Scroll Hint -->
+    <div id="tutorialHint" class="tutorial-hint">
+      <div class="circle">
+        <div class="arrow">⬇</div>
+      </div>
+      <p data-key="scrollHint">Scroll Down</p>
+    </div>
+  </header>
+
+  <div class="container">
+    <div class="card fade-in">
+      <h2 data-key="historyTitle">📜 Historical Importance</h2>
+      <p data-key="historyText">
+        The <b>Samadhi of Chhatrapati Shivaji Maharaj</b> at Raigad Fort is the final resting place 
+        of the great Maratha king. After his death in 1680, he was cremated here, and this sacred 
+        site became his eternal memorial.
+      </p>
+    </div>
+
+    <div class="card fade-in">
+      <h2 data-key="archTitle">🏰 Architecture</h2>
+      <p data-key="archText">
+        The Samadhi is a black stone structure covered with saffron cloth and flowers by devotees. 
+        A magnificent statue of Shivaji Maharaj seated on his throne stands nearby, facing the fort. 
+      </p>
+     
+
+
+</video>
+
+    </div>
+
+    <div class="card fade-in">
+      <h2 data-key="lifeTitle">🦁 Life of Chhatrapati Shivaji Maharaj</h2>
+      <p data-key="lifeText"><b>Born:</b> 19 February 1630, Shivneri Fort<br>
+         <b>Parents:</b> Shahaji Bhosale and Jijabai</p>
+      <p data-key="lifeText2">
+        From a young age, Shivaji Maharaj was inspired by his mother Jijabai and his teacher Dadoji Konddev. 
+        At age 16, he captured Torna Fort and began building the Maratha Swarajya.
+      </p><video width="100%" autoplay loop muted playsinline>
+  <source src="./images/WhatsApp Video 2025-08-23 at 14.58.50_a83bfda6.mp4" type="video/mp4">
+  Your browser does not support the video tag.
+    </div>
+
+    <div class="card fade-in">
+      <h2 data-key="achievementsTitle">⚔️ Major Achievements</h2>
+      <ul>
+        <li data-key="achieve1">Defeated Afzal Khan at Pratapgad (1659).</li>
+        <li data-key="achieve2">Raided Surat (1664) and struck fear in the Mughal Empire.</li>
+        <li data-key="achieve3">Built India’s first strong navy at Sindhudurg & Vijaydurg.</li>
+        <li data-key="achieve4">Coronated as Chhatrapati at Raigad Fort in 1674.</li>
+      </ul>
+    </div>
+
+    <div class="card fade-in">
+      <h2 data-key="cultureTitle">🌸 Cultural Significance</h2>
+      <p data-key="cultureText">
+        The Samadhi is visited by thousands of people every year to pay their respects. 
+        Festivals like <b>Shiv Jayanti</b> and <b>Punyatithi</b> are celebrated here with great devotion. 
+        It stands as a symbol of Maratha valor, sacrifice, and Swarajya.
+      </p>
+    </div>
+
+    <div class="card fade-in">
+      <h2 data-key="legacyTitle">🌟 Legacy</h2>
+      <p data-key="legacyText">
+        Chhatrapati Shivaji Maharaj passed away on <b>3 April 1680</b> at Raigad. 
+        His Samadhi here continues to inspire millions. 
+        His vision of Swarajya laid the foundation for the Maratha Empire and later India's freedom struggle.
+      </p>
+    </div>
+
+    <div class="facts fade-in">
+      <h2 data-key="factsTitle">✨ Interesting Facts</h2>
+      <ul>
+        <li data-key="fact1">The Samadhi was restored by Lokmanya Bal Gangadhar Tilak in the 20th century.</li>
+        <li data-key="fact2">It is one of the most visited heritage sites in Maharashtra.</li>
+        <li data-key="fact3">The atmosphere around the Samadhi fills visitors with pride and respect.</li>
+      </ul>
+    </div>
+  </div>
+
+  <footer>
+    ⚔ <span data-key="footerText">Digital Fort Experience | Raigad Fort QR System</span> ⚔ <br>
+    © 2025 All Rights Reserved
+  </footer>
+
+  <script>
+    // Scroll animations
+    const elements = document.querySelectorAll('.fade-in');
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach(entry => { if(entry.isIntersecting){ entry.target.classList.add('visible'); } });
+    }, {threshold:0.2});
+    elements.forEach(el => observer.observe(el));
+
+    // Toggle Menu Script
+    function toggleMenu(){ var m = document.getElementById('menu'); if(m){ m.classList.toggle('open'); } }
+
+    // Hide scroll hint
+    window.addEventListener("scroll", ()=>{ const hint = document.getElementById("tutorialHint"); if(hint) hint.style.display="none"; });
+    setTimeout(()=>{ const hint = document.getElementById("tutorialHint"); if(hint) hint.style.display="none"; }, 6000);
+
+    // Language translations
+    const translations = {
+      en:{
+        title:"Shivaji Maharaj Samadhi", subtitle:"The Eternal Memorial at Raigad Fort", scrollHint:"Scroll Down",
+        historyTitle:"📜 Historical Importance", historyText:"The <b>Samadhi of Chhatrapati Shivaji Maharaj</b> at Raigad Fort is the final resting place of the great Maratha king. After his death in 1680, he was cremated here, and this sacred site became his eternal memorial.",
+        archTitle:"🏰 Architecture", archText:"The Samadhi is a black stone structure covered with saffron cloth and flowers by devotees. A magnificent statue of Shivaji Maharaj seated on his throne stands nearby, facing the fort.",
+        lifeTitle:"🦁 Life of Chhatrapati Shivaji Maharaj", lifeText:"<b>Born:</b> 19 February 1630, Shivneri Fort<br><b>Parents:</b> Shahaji Bhosale and Jijabai", lifeText2:"From a young age, Shivaji Maharaj was inspired by his mother Jijabai and his teacher Dadoji Konddev. At age 16, he captured Torna Fort and began building the Maratha Swarajya.",
+        achievementsTitle:"⚔️ Major Achievements", achieve1:"Defeated Afzal Khan at Pratapgad (1659).", achieve2:"Raided Surat (1664) and struck fear in the Mughal Empire.", achieve3:"Built India’s first strong navy at Sindhudurg & Vijaydurg.", achieve4:"Coronated as Chhatrapati at Raigad Fort in 1674.",
+        cultureTitle:"🌸 Cultural Significance", cultureText:"The Samadhi is visited by thousands of people every year to pay their respects. Festivals like <b>Shiv Jayanti</b> and <b>Punyatithi</b> are celebrated here with great devotion. It stands as a symbol of Maratha valor, sacrifice, and Swarajya.",
+        legacyTitle:"🌟 Legacy", legacyText:"Chhatrapati Shivaji Maharaj passed away on <b>3 April 1680</b> at Raigad. His Samadhi here continues to inspire millions. His vision of Swarajya laid the foundation for the Maratha Empire and later India's freedom struggle.",
+        factsTitle:"✨ Interesting Facts", fact1:"The Samadhi was restored by Lokmanya Bal Gangadhar Tilak in the 20th century.", fact2:"It is one of the most visited heritage sites in Maharashtra.", fact3:"The atmosphere around the Samadhi fills visitors with pride and respect.",
+        footerText:"Digital Fort Experience | Raigad Fort QR System"
+      },
+      mr:{
+        title:"छत्रपती शिवाजी महाराज समाधी", subtitle:"राजगड किल्ल्यातील शाश्वत स्मारक", scrollHint:"खाली स्क्रोल करा",
+        historyTitle:"📜 ऐतिहासिक महत्व", historyText:"राजगड किल्ल्यातील <b>छत्रपती शिवाजी महाराज समाधी</b> हा महान मराठा राजाचा अंतिम विश्रांती स्थळ आहे. 1680 मध्ये त्यांच्यावर अंत्यसंस्कार केले गेले आणि हा पवित्र स्थळ त्यांचे शाश्वत स्मारक बनले.",
+        archTitle:"🏰 वास्तुकला", archText:"समाधी हा काळ्या दगडाचा ढांचा आहे, ज्यावर भक्तांनी केशरी कापड आणि फुलांनी आच्छादन केले आहे. छत्रपती शिवाजी महाराजांची भव्य मूर्ती त्यांच्या सिंहासनावर बसलेली आहे, जी किल्ल्याकडे पाहते.",
+        lifeTitle:"🦁 छत्रपती शिवाजी महाराजांचे जीवन", lifeText:"<b>जन्म:</b> 19 फेब्रुवारी 1630, शिवनेरी किल्ला<br><b>पालक:</b> शाहाजी भोसले आणि जिजाबाई", lifeText2:"लहानपणापासून, शिवाजी महाराज त्यांच्या आई जिजाबाई आणि शिक्षक दादोजीकोंडदेव यांच्यापासून प्रेरित होते. वय 16 मध्ये त्यांनी तोरणा किल्ला जिंकला आणि मराठा स्वराज्य उभे केले.",
+        achievementsTitle:"⚔️ प्रमुख साध्ये", achieve1:"प्रसिद्ध अफझल खान यांचा पराभव प्रतापगड (1659).", achieve2:"सूरतवर छापा (1664) आणि मुघल साम्राज्यावर भय दाखवले.", achieve3:"सिंधुदुर्ग आणि विजयदुर्ग येथे भारताची पहिली मजबूत नौसेना तयार केली.", achieve4:"1674 मध्ये राजगड किल्ल्यावर छत्रपती म्हणून राज्याभिषेक केले.",
+        cultureTitle:"🌸 सांस्कृतिक महत्त्व", cultureText:"समाधी येथे दरवर्षी हजारो लोक दर्शनासाठी येतात. <b>शिवजयंती</b> आणि <b>पुण्यतिथी</b> येथे भक्तिपूर्ण पद्धतीने साजरी केली जातात. हे मराठा शौर्य, बलिदान आणि स्वराज्याचे प्रतीक आहे.",
+        legacyTitle:"🌟 वारसा", legacyText:"छत्रपती शिवाजी महाराजांचा मृत्यू 3 एप्रिल 1680 रोजी राजगड येथे झाला. येथे समाधी लाखो लोकांना प्रेरणा देते. त्यांचे स्वराज्याचे दृष्टिकोन मराठा साम्राज्य आणि नंतर भारताच्या स्वातंत्र्य संग्रामाची पाया घालते.",
+        factsTitle:"✨ मनोरंजक तथ्ये", fact1:"समाधीची 20व्या शतकात लोकमान्य बाळ गंगाधर टिळक यांनी दुरुस्ती केली.", fact2:"ही महाराष्ट्रातील सर्वात जास्त भेट दिली जाणारी वारसा स्थळांपैकी एक आहे.", fact3:"समाधीच्या भोवतीचे वातावरण भेट देणाऱ्यांमध्ये गर्व आणि सन्मान निर्माण करते.",
+        footerText:"डिजिटल फोर्ट अनुभव | राजगड किल्ला QR प्रणाली"
+      },
+      hi:{
+        title:"छत्रपति शिवाजी महाराज समाधी", subtitle:"राजगढ़ किले का शाश्वत स्मारक", scrollHint:"नीचे स्क्रॉल करें",
+        historyTitle:"📜 ऐतिहासिक महत्व", historyText:"राजगढ़ किले में <b>छत्रपति शिवाजी महाराज समाधी</b> महान मराठा राजा का अंतिम विश्राम स्थल है। 1680 में उनका अंत्येष्टि किया गया और यह पवित्र स्थल उनका शाश्वत स्मारक बन गया।",
+        archTitle:"🏰 वास्तुकला", archText:"समाधी काले पत्थर की संरचना है, जिसे भक्तों द्वारा केसरिया कपड़े और फूलों से सजाया गया है। छत्रपति शिवाजी महाराज की भव्य मूर्ति उनके सिंहासन पर बैठी है, जो किले की ओर देखती है।",
+        lifeTitle:"🦁 छत्रपति शिवाजी महाराज का जीवन", lifeText:"<b>जन्म:</b> 19 फरवरी 1630, शिवनेरी किला<br><b>माता-पिता:</b> शाहाजी भोसले और जिजाबाई", lifeText2:"छोटे उम्र से, शिवाजी महाराज अपनी माता जिजाबाई और शिक्षक दादोजीकोंडदेव से प्रेरित हुए। 16 वर्ष की आयु में उन्होंने तोरणा किला जीता और मराठा स्वराज्य की स्थापना की।",
+        achievementsTitle:"⚔️ प्रमुख उपलब्धियां", achieve1:"अफज़ल खान को प्रतापगढ़ (1659) में हराया।", achieve2:"सूरत पर छापा (1664) और मुग़ल साम्राज्य में भय उत्पन्न किया।", achieve3:"सिंधुदुर्ग और विजयदुर्ग में भारत का पहला मजबूत नौसेना बनाया।", achieve4:"1674 में राजगढ़ किले पर छत्रपति के रूप में राज्याभिषेक।",
+        cultureTitle:"🌸 सांस्कृतिक महत्व", cultureText:"समाधी में हर साल हजारों लोग श्रद्धांजलि देने आते हैं। <b>शिव जयंती</b> और <b>पुण्यतिथि</b> यहाँ बड़े श्रद्धा से मनाई जाती हैं। यह मराठा साहस, बलिदान और स्वराज्य का प्रतीक है।",
+        legacyTitle:"🌟 विरासत", legacyText:"छत्रपति शिवाजी महाराज का निधन 3 अप्रैल 1680 को राजगढ़ में हुआ। यहाँ समाधी लाखों लोगों को प्रेरणा देती है। उनका स्वराज्य का दृष्टिकोण मराठा साम्राज्य और बाद में भारत की स्वतंत्रता संग्राम की नींव रखता है।",
+        factsTitle:"✨ रोचक तथ्य", fact1:"समाधी की 20वीं सदी में लोकोन्न्य बाल गंगाधर टिळक द्वारा मरम्मत की गई।", fact2:"यह महाराष्ट्र के सबसे अधिक देखी जाने वाली विरासत स्थलों में से एक है।", fact3:"समाधी के आसपास का वातावरण आगंतुकों में गर्व और सम्मान पैदा करता है।",
+        footerText:"डिजिटल किला अनुभव | राजगढ़ किला QR प्रणाली"
+      }
+    };
+
+    document.getElementById('langSwitcher').addEventListener('change', ()=>{
+      const lang = document.getElementById('langSwitcher').value;
+      document.querySelectorAll('[data-key]').forEach(el=>{
+        const key = el.getAttribute('data-key');
+        if(translations[lang][key]) el.innerHTML = translations[lang][key];
+      });
+    });
+  </script>
+</body>
+</html>
+
